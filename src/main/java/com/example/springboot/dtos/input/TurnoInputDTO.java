@@ -8,13 +8,10 @@ import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
 @Data
-@Validated
 public class TurnoInputDTO {
 
-    @NotNull(message = "El nombre no debe estar vacio" )
     private String razaPaciente;
 
-    @NotEmpty(message = "El nombre no debe estar vacio")
     private String nombrePaciente;
 
 }

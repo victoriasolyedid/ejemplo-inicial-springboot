@@ -8,13 +8,18 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Entity
 public class Turno {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private static Long autoincremental = 1l;
+
     Long id;
-    @Column
+
     String razaPaciente;
-    @Column
+
     String nombrePaciente;
+
+    public Turno() {
+        this.id = autoincremental;
+        autoincremental++;
+    }
 }

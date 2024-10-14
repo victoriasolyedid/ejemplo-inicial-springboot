@@ -29,18 +29,12 @@ public class TurnoController {
     }
 
     @PostMapping
-    public ResponseEntity<String> cargarTurno(@RequestBody @Valid TurnoInputDTO turno, BindingResult bindingResult){
+    public ResponseEntity<String> cargarTurno(@RequestBody TurnoInputDTO turno){
 
 
-        if(!bindingResult.hasErrors()) {
             return  ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body(this.turnosService.crearTurno(turno).toString());
-        }
-
-        else{
-            return ResponseEntity.badRequest().body("Validation failed " + bindingResult.getAllErrors());
-        }
 
 
     }

@@ -48,7 +48,7 @@ public class TurnosService implements ITurnosService {
 
     private Turno buscarTurno(Long id) {
         return turnoRepository
-                .findById(id)
-                .orElseThrow(() -> new NotFoundException("No existe un turno de id " + id));
+                .findById(id);
+               // .orElseThrow(() -> new NotFoundException("No existe un turno de id " + id));
     }
 }
