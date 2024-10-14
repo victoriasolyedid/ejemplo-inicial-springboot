@@ -27,7 +27,7 @@ src/
                      ├── exceptions/       # Manejo de Excepciones
                      ├── mappers/          # Mapeadores de DTOs a Entidades
                      ├── models/           # Entidades y Repositorios
-                     ├── services/           # Entidades y Repositorios
+                     ├── services/           # Servicios
                      └── Application.java  # Clase principal
 ```
 
