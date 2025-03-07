@@ -7,8 +7,8 @@ import com.example.springboot.models.entities.Turno;
 import java.util.List;
 
 public interface ITurnosService {
-    List<TurnoOutputDTO> buscarTodos();
-    TurnoOutputDTO buscarPorId(Long id);
+    List<TurnoOutputDTO> obtenerTodos();
+    TurnoOutputDTO obtenerPorId(Long id);
     Long crearTurno(TurnoInputDTO turno);
     void eliminarTurno(Long id);
     TurnoOutputDTO modificarTurno(TurnoInputDTO turno, Long id);
