@@ -1,9 +1,6 @@
 package com.example.springboot.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,11 +16,9 @@ public class Turno {
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
-    private String razaPaciente;
-
-    @Column(nullable = false)
-    private String nombrePaciente;
+    @ManyToOne
+    @JoinColumn(name="mascota_id",referencedColumnName="id")
+    private Mascota mascota;
 
 
 }

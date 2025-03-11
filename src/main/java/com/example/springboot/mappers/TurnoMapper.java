@@ -9,8 +9,7 @@ public class TurnoMapper {
         return TurnoOutputDTO
                 .builder()
                 .id(turno.getId())
-                .nombrePaciente(turno.getNombrePaciente())
-                .razaPaciente(turno.getRazaPaciente())
+                .mascota(turno.getMascota())
                 .build();
     }
 }

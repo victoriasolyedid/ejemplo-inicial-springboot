@@ -1,5 +1,6 @@
 package com.example.springboot.dtos.output;
 
+import com.example.springboot.models.entities.Mascota;
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,6 +8,5 @@ import lombok.Data;
 @Builder
 public class TurnoOutputDTO {
     private Long id;
-    private String razaPaciente;
-    private String nombrePaciente;
+    private Mascota mascota;
 }
