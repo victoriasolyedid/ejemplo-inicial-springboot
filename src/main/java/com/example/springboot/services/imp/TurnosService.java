@@ -3,7 +3,10 @@ package com.example.springboot.services.imp;
 import com.example.springboot.dtos.input.TurnoInputDTO;
 import com.example.springboot.dtos.output.TurnoOutputDTO;
 import com.example.springboot.exceptions.NotFoundException;
+import com.example.springboot.factories.MascotaFactory;
+import com.example.springboot.factories.TurnoFactory;
 import com.example.springboot.mappers.TurnoMapper;
+import com.example.springboot.models.entities.Mascota;
 import com.example.springboot.models.entities.Turno;
 import com.example.springboot.models.repositories.MascotaRepository;
 import com.example.springboot.models.repositories.TurnoRepository;
@@ -39,16 +42,15 @@ public class TurnosService implements ITurnosService {
     //CREATE (POST)
     @Override
     public Long crearTurno(TurnoInputDTO turno) {
-        //Habria que crear un converter para asegurarme de no estar generando objetos repes
-        // Se me queda corto el object mapper en este caso
-        Turno nuevoTurno = new ObjectMapper().convertValue(turno, Turno.class);
 
-        //Validacion para persistir la mascota en caso de que no exista en el repositorio
-        if(!mascotaRepository.existsById(turno.getMascota().getId()))
-        {
-            mascotaRepository.save(nuevoTurno.getMascota());
+        Mascota mascota = mascotaRepository.findById(turno.getMascota().getId()).orElse(null);
+
+        if (mascota == null) {
+            mascota = MascotaFactory.crearMascota(turno);
+            mascotaRepository.save(mascota);
         }
 
+        Turno nuevoTurno = TurnoFactory.crearTurno(turno, mascota);
         this.turnoRepository.save(nuevoTurno);
         return nuevoTurno.getId();
     }
